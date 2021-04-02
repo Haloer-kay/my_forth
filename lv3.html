@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    .top{
+        text-align: center;
+        }
+        #main{
+         background-color: aqua;
+            height: 515px;
+            width: 1000px; 
+            margin: 0 auto;
+            margin-top: 20px;
+            position: relative;
+        }
+        #inner{
+            background-color: pink;
+            width: 450px;
+            position: absolute;
+            bottom: 0;
+        }
+        button{
+            border-color: #ccc;
+            border-radius: 2px;
+            border: 0px;
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="top">
+       
+        <input type="text" id="input">
+        <button id="zr">左侧入</button>
+        <button id="yr">右侧入</button>
+        <button id="zc">左侧出</button>
+        <button id="yc">右侧出</button>
+        <button id="rnew">重新排序</button>
+        <button id="btn1">清空</button>
+        <button id="btn2">随机生成</button>
+    </div>
+    <div id="main">
+        <div id="inner">
+        </div>
+    </div>
+    <script>
+        var input=document.getElementById('input')
+        var zr=document.getElementById('zr')
+        var yr=document.getElementById('yr')
+        var zc=document.getElementById('zc')
+        var yc=document.getElementById('yc')
+        var rnew=document.getElementById('rnew')
+        var btn1=document.getElementById('btn1')
+        var btn2=document.getElementById('btn2')
+        var inner=document.getElementById("inner")
+        var main=document.getElementById('main')
+        //左侧入按钮
+        zr.onclick=function(){
+            var value=input.value
+            inner.style.left=0+'px'
+            inner.style.width='450px'
+        if(value<10||value>100||value=='')
+        {
+            alert('请输入10~100的数字')
+        }
+        else{ 
+            inner.style.height=value*5+'px';
+            inner.innerHTML=value
+        }
+        }
+        //右侧入按钮
+       yr.onclick=function(){
+        var value=input.value 
+        inner.style.right='0px'
+        inner.style.width='450px'
+        if(value<10||value>100||value=='')
+        {
+            alert('请输入10~100的数字')
+        }
+        else{
+            inner.style.height=value*5+'px';
+            inner.innerHTML=value
+    }
+}
+//随机生成按钮
+    btn2.onclick=function(){
+        inner.style.width='60px'
+  var array=new Array(); 
+  for(var i = 0 ; ; i++){ 
+     if(array.length<10){ 
+           generateRandom(100); 
+     }else{ 
+       break; 
+    } 
+ } 
+ for(var i = 0 ; i < array.length; i++){ 
+      console.log(array[i]); 
+      inner.style.height=array[i]*5+'px'; 
+      inner.innerHTML=array[i];
+      var div=document.createElement('div');
+      div.innerHTML=array[i];
+      console.log(div);
+      main.appendChild=div;
+ } 
+ function generateRandom(count){ 
+      var rand = parseInt(Math.random()*count); 
+      for(var i = 0 ; i < array.length; i++){ 
+          if(array[i] == rand){  
+               return false; 
+          }     
+     } 
+      array.push(rand); 
+ } 
+}
+btn2.onclick=function(){
+    document.getElementById('inner').innerHTML = "";
+};
+    </script>   
+</body>
+</html>

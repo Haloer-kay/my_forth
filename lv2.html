@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <textarea name="" id="" cols="80" rows="10"></textarea>
+    <button class="post">点击发布</button>
+    <div class="list">
+    </div>
+
+    <script>
+        let btn = document.querySelector('.post');
+        let list = document.querySelector('.list');
+        let text=document.querySelector('textarea')
+        btn.addEventListener('click', function(){
+        let p = document.createElement('p');   
+        let plist= list.querySelectorAll('p')  
+        p.innerHTML = text.value;
+            //添加新的元素
+        if (plist.length === 0) {           
+            list.appendChild(p);            
+        } else {
+            list.insertBefore(p, plist[0]);
+        }
+            //清空原来的信息
+        document.querySelector('textarea').value = '';      
+        })
+    </script>
+</body>
+</html>
